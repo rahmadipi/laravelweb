@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-
 @extends('layouts.main')
 
 @section('container')
-halaman dashboard {{ $nama }}
+<h1>Halaman {{ $menu }}</h1>
 @endsection

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Blog;
+use App\Models\Codename;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('menus/dashboard', [
-        'nama' => 'Putra Rahmadi'
+    return view('menus/home', [
+        "menu" => "Home",
+        "site_descriptions" => Codename::site_descriptions(),
+    ]);
+});
+
+Route::get('/home', function () {
+    return view('menus/home', [
+        "menu" => "Home",
+        "site_descriptions" => Codename::site_descriptions(),
+    ]);
+});
+
+Route::get('/about', function () {
+    return view('menus/about', [
+        "menu" => "About",
+        "site_descriptions" => Codename::site_descriptions(),
+    ]);
+});
+
+Route::get('/blog', function () {
+    return view('menus/blog', [
+        "menu" => "Blog",
+        "site_descriptions" => Codename::site_descriptions(),
+        "posts" => Blog::all(),
+    ]);
+});
+
+Route::get('/blog/{slug}', function ($slug) {
+    return view('menus/post', [
+        "menu" => "Blog",
+        "site_descriptions" => Codename::site_descriptions(),
+        "post" => Blog::find($slug),
     ]);
 });
 
