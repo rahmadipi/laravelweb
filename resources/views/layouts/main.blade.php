@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-  @include('partials.head')
+    @include('partials.head')
 </head>
 
 <body>
-  @include('partials.navbar')
-  <div class="container mt-4">
-    @yield('container')
-  </div>
+    @include('partials.navbar')
+    <div class="container mt-4">
+        @yield('container')
+    </div>
 
-  <div>
-    @include('partials.script')
-  </div>
+    <div>
+        @include('partials.script')
+    </div>
 </body>
 
 </html>

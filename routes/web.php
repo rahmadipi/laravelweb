@@ -2,8 +2,8 @@
 
 use App\Models\Codename;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SignController;
 use App\Http\Controllers\AboutController;
 
@@ -23,7 +23,7 @@ Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/about', [AboutController::class, 'index']);
 
-Route::get('/blog', [BlogController::class, 'index']);
-Route::get('/blog/{slug}', [BlogController::class, 'show']);
+Route::get('/blog', [PostController::class, 'index']);
+Route::get('/blog/{post:slug}', [PostController::class, 'show']);
 
 Route::get('/signin', [SignController::class, 'index']);
