@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Codename;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CodenameController;
 
 class PortfolioController extends Controller
 {
@@ -12,7 +12,7 @@ class PortfolioController extends Controller
     {
         return view('menus/portfolios', [
             "menu" => "Portfolio",
-            "site_descriptions" => Codename::site_descriptions(),
+            "site_descriptions" => CodenameController::site_descriptions(),
             "posts" => Post::all(),
         ]);
     }
@@ -21,7 +21,7 @@ class PortfolioController extends Controller
     {
         return view('menus/portfolio', [
             "menu" => "Portfolio",
-            "site_descriptions" => Codename::site_descriptions(),
+            "site_descriptions" => CodenameController::site_descriptions(),
             "post" => $post,
         ]);
     }

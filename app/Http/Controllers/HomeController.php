@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Codename;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CodenameController;
 
 class HomeController extends Controller
 {
@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
         return view('menus/home', [
             "menu" => "Home",
-            "site_descriptions" => Codename::site_descriptions(),
+            "site_descriptions" => CodenameController::site_descriptions(),
         ]);
     }
 }

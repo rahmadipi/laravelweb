@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Codename;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CodenameController;
 
 class PostController extends Controller
 {
@@ -12,7 +12,7 @@ class PostController extends Controller
     {
         return view('menus/posts', [
             "menu" => "Blog",
-            "site_descriptions" => Codename::site_descriptions(),
+            "site_descriptions" => CodenameController::site_descriptions(),
             "posts" => Post::all(),
         ]);
     }
@@ -21,7 +21,7 @@ class PostController extends Controller
     {
         return view('menus/post', [
             "menu" => "Blog",
-            "site_descriptions" => Codename::site_descriptions(),
+            "site_descriptions" => CodenameController::site_descriptions(),
             "post" => $post,
         ]);
     }

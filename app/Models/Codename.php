@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-class Codename
-{
-    private static $site_descriptions = [
-        "title" => "Port.io",
-        "author" => "Putra Rahmadi",
-    ];
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-    public static function site_descriptions()
-    {
-        return self::$site_descriptions;
-    }
+class Codename extends Model
+{
+    use HasFactory;
+
+    protected $guarded = ['id'];
 }
