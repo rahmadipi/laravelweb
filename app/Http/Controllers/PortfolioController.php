@@ -6,12 +6,12 @@ use App\Models\Post;
 use App\Models\Codename;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PortfolioController extends Controller
 {
     public function index()
     {
-        return view('menus/posts', [
-            "menu" => "Blog",
+        return view('menus/portfolios', [
+            "menu" => "Portfolio",
             "site_descriptions" => Codename::site_descriptions(),
             "posts" => Post::all(),
         ]);
@@ -19,8 +19,8 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('menus/post', [
-            "menu" => "Blog",
+        return view('menus/portfolio', [
+            "menu" => "Portfolio",
             "site_descriptions" => Codename::site_descriptions(),
             "post" => $post,
         ]);

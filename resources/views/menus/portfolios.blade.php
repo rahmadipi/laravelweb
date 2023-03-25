@@ -1,4 +1,4 @@
-@extends('layouts.blog')
+@extends('layouts.list')
 
 @section('container')
 <h1>Halaman {{ $menu }}</h1>

@@ -13,23 +13,24 @@
                 <li class="nav-item{{ $menu=='Blog'?' active':'' }}">
                     <a class="nav-link" href="{{ url('/blog') }}">Blog</a>
                 </li>
-                <li class="nav-item{{ $menu=='About'?' active':'' }}">
-                    <a class="nav-link" href="{{ url('/about') }}">About</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Portofolio
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="{{ url('/portfolio/php-native') }}">PHP Native</a>
+                        <a class="dropdown-item" href="{{ url('/portfolio/codeigniter-3') }}">Codeigniter 3</a>
+                        <a class="dropdown-item" href="{{ url('/portfolio/laravel-8') }}">Laravel 8</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="{{ url('/portfolio/coreldraw') }}">Coreldraw</a>
+                        <a class="dropdown-item" href="{{ url('/portfolio/adobe-flash') }}">Adobe Flash</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('/portfolio') }}">Tampilkan semua</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <li class="nav-item{{ $menu=='About'?' active':'' }}">
+                    <a class="nav-link" href="{{ url('/about') }}">About</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
