@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Codename;
 use Illuminate\Http\Request;
-use App\Http\Controllers\CodenameController;
 
-class HomeController extends Controller
+class CategoryController extends Controller
 {
-    private $menu = "Home";
+    private $menu = "Category";
 
     public function index()
     {
-        return view('modules/home/home', [
+        return view('modules/category/categories', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
+            "categories" => Category::all(),
         ]);
     }
 }

@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Codename;
 use Illuminate\Http\Request;
-use App\Http\Controllers\CodenameController;
 
 class AboutController extends Controller
 {
+    private $menu = "About";
+
     public function index()
     {
-        return view('menus/about', [
-            "menu" => "About",
-            "site_descriptions" => CodenameController::site_descriptions(),
+        return view('modules/about/about', [
+            "menu" => $this->menu,
+            "site_descriptions" => Codename::siteDescriptions(),
         ]);
     }
 }

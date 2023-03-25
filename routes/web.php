@@ -24,10 +24,11 @@ Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/about', [AboutController::class, 'index']);
 
-Route::get('/blog', [PostController::class, 'index']);
-Route::get('/blog/{post:slug}', [PostController::class, 'show']);
+Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/blog/{post:slug}', [BlogController::class, 'show']);
+
+Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category/{category:slug}', [CategoryController::class, 'show']);
 
 Route::get('/portfolio', [PortfolioController::class, 'index']);
-Route::get('/portfolio/{post:slug}', [PortfolioController::class, 'show']);
-
-Route::get('/signin', [SignController::class, 'index']);
+Route::get('/portfolio/{portfolio:slug}', [PortfolioController::class, 'show']);

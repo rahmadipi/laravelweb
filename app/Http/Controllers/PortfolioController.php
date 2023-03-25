@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Codename;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
-use App\Http\Controllers\CodenameController;
 
 class PortfolioController extends Controller
 {
+    private $menu = "Portfolio";
+
     public function index()
     {
-        return view('menus/portfolios', [
-            "menu" => "Portfolio",
-            "site_descriptions" => CodenameController::site_descriptions(),
-            "posts" => Post::all(),
+        return view('modules/portfolio/portfolios', [
+            "menu" => $this->menu,
+            "site_descriptions" => Codename::siteDescriptions(),
+            "portfolios" => Portfolio::all(),
         ]);
     }
 
-    public function show(Post $post)
+    public function show(Portfolio $portfolio)
     {
-        return view('menus/portfolio', [
-            "menu" => "Portfolio",
-            "site_descriptions" => CodenameController::site_descriptions(),
-            "post" => $post,
+        return view('modules/portfolio/portfolio', [
+            "menu" => $this->menu,
+            "site_descriptions" => Codename::site_descriptions(),
+            "portfolio" => $portfolio,
         ]);
     }
 }

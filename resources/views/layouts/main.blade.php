@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    @dd($site_descriptions)
     @include('partials.head')
 </head>
 

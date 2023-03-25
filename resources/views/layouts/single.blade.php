@@ -8,10 +8,10 @@
 <body>
     @include('partials.navbar')
     <div class="container mt-4">
-        @yield('container')
+        @yield('header')
     </div>
     <div class="container mt-4">
-        @yield('posts')
+        @yield('content')
     </div>
 
     <div>
