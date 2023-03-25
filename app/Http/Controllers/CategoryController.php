@@ -18,4 +18,13 @@ class CategoryController extends Controller
             "categories" => Category::all(),
         ]);
     }
+
+    public function show(Category $category)
+    {
+        return view('modules/category/category', [
+            "menu" => $this->menu,
+            "site_descriptions" => Codename::siteDescriptions(),
+            "category" => $category,
+        ]);
+    }
 }
