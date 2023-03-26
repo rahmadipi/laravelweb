@@ -7,5 +7,6 @@
         "statusBarItem.hoverBackground": "#e27c79",
         "statusBarItem.remoteBackground": "#d9534f",
         "statusBarItem.remoteForeground": "#e7e7e7"
-    }
+    },
+    "blade.format.enable": true
 }
