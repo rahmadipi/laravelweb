@@ -17,7 +17,7 @@ class BlogController extends Controller
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
-            "posts" => Post::all(),
+            "posts" => Post::with(['author', 'category'])->latest()->get(),
         ]);
     }
 
@@ -36,7 +36,7 @@ class BlogController extends Controller
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
             "author" => $user,
-            "posts" => $user->posts,
+            "posts" => $user->posts->load(['author', 'category']),
         ]);
     }
 
@@ -46,7 +46,7 @@ class BlogController extends Controller
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
             "category" => $category,
-            "posts" => $category->posts,
+            "posts" => $category->posts->load(['author', 'category']),
         ]);
     }
 }
