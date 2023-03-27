@@ -17,7 +17,7 @@ class BlogController extends Controller
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
-            "posts" => Post::with(['author', 'category'])->latest()->get(),
+            "posts" => Post::latest()->get(),
         ]);
     }
 

@@ -8,5 +8,6 @@
         "statusBarItem.remoteBackground": "#d9534f",
         "statusBarItem.remoteForeground": "#e7e7e7"
     },
-    "blade.format.enable": true
+    "blade.format.enable": true,
+    "bladeFormatter.format.enabled": true
 }

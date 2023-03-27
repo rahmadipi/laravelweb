@@ -5,15 +5,30 @@
 @endsection
 
 @section('content')
-@if(count($categories)!=0)
-@foreach ($categories as $category)
-<article class="mb-5">
-    <a href="/category/{{ $category->slug }}">
-        <h3>{{ $category->name }}</h3>
-    </a>
-    <p>{{ $category->description }}</p>
-</article>
-@endforeach
+@if($categories->count())
+<div class="card-deck">
+    <div class="row">
+        @foreach ($categories as $category)
+        <div class="col-lg-4 col-xs-12">
+            <div class="card mb-3">
+                <a href="/category/{{ $category->slug }}" class="text-decoration-none">
+                    <img class="card-img-top" src="https://source.unsplash.com/400x150?{{ $category->name }}"
+                        alt="{{ $category->name }}">
+                    <div class="card-img-overlay d-flex align-items-center">
+                        <h4 class="card-title text-center border border-light text-white flex-fill px-1 py-2"
+                            style="background-color:rgba(220, 53, 69, 0.7)">
+                            {{ $category->name }}
+                        </h4>
+                    </div>
+                </a>
+                <div class="card-body">
+                    <p class="card-text text-justify">{{ $category->description }}</p>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
 @else
 <div class="text-center">data kosong</div>
 @endif
