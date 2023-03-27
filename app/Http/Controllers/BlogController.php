@@ -14,10 +14,12 @@ class BlogController extends Controller
 
     public function index()
     {
+        $posts = Post::latest()->filter(request(['search', 'category']));
+
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
-            "posts" => Post::latest()->get(),
+            "posts" => $posts->get(),
         ]);
     }
 
