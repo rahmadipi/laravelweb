@@ -14,12 +14,12 @@ class BlogController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->filter(request(['search', 'category']));
+        $posts = Post::latest()->filter(request(['search', 'category', 'author']));
 
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
-            "posts" => $posts->get(),
+            "posts" => $posts->paginate(7)->withQueryString(),
         ]);
     }
 
@@ -34,21 +34,25 @@ class BlogController extends Controller
 
     public function byAuthor(User $user)
     {
+        $posts = $user->posts->load(['author', 'category']);
+
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
             "author" => $user,
-            "posts" => $user->posts->load(['author', 'category']),
+            "posts" => $posts->paginate(7)->withQueryString(),
         ]);
     }
 
     public function byCategory(Category $category)
     {
+        $posts = $category->posts->load(['author', 'category']);
+
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
             "category" => $category,
-            "posts" => $category->posts->load(['author', 'category']),
+            "posts" => $posts->paginate(7)->withQueryString(),
         ]);
     }
 }

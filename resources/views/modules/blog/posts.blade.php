@@ -52,8 +52,11 @@
 @endif
 @endsection
 
-@if(isset($author) or isset($category))
 @section('footer')
+@if(isset($author) or isset($category))
 <a href="/blog">Lihat semua blog post</a>
-@endsection
 @endif
+<div class="d-flex justify-content-end">
+    {{ $posts->links() }}
+</div>
+@endsection
