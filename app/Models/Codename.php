@@ -13,10 +13,9 @@ class Codename extends Model
 
     public static function siteDescriptions()
     {
-        $site_descriptions = new Codename;
-        $site_descriptions->title = self::where('var', 'title')->value('value');
-        $site_descriptions->owner = self::where('var', 'owner')->value('value');
+        $site_descriptions = Codename::whereIn('var', ['title', 'owner'])
+            ->pluck('value', 'var')->toArray();
 
-        return $site_descriptions;
+        return (object) $site_descriptions;
     }
 }
