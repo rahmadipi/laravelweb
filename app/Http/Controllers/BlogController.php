@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     private $menu = "Blog";
+    private $perpage = 10;
 
     public function index()
     {
@@ -19,7 +20,7 @@ class BlogController extends Controller
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
-            "posts" => $posts->paginate(7)->withQueryString(),
+            "posts" => $posts->paginate($this->perpage)->withQueryString(),
         ]);
     }
 
@@ -34,25 +35,29 @@ class BlogController extends Controller
 
     public function byAuthor(User $user)
     {
-        $posts = $user->posts->load(['author', 'category']);
-
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
             "author" => $user,
-            "posts" => $posts->paginate(7)->withQueryString(),
+            "posts" => Post::where('author_id', $user->id)
+                ->with(['author', 'category'])
+                ->filter(request(['search', 'category', 'author']))
+                ->orderBy('created_at', 'desc')
+                ->paginate($this->perpage),
         ]);
     }
 
     public function byCategory(Category $category)
     {
-        $posts = $category->posts->load(['author', 'category']);
-
         return view('modules/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
             "category" => $category,
-            "posts" => $posts->paginate(7)->withQueryString(),
+            "posts" => Post::where('category_id', $category->id)
+                ->with(['author', 'category'])
+                ->filter(request(['search', 'category', 'author']))
+                ->orderBy('created_at', 'desc')
+                ->paginate($this->perpage),
         ]);
     }
 }

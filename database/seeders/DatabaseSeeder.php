@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'PHP dengan framework Laravel 8.',
         ]);
 
-        Post::factory(20)->create();
+        Post::factory(100)->create();
 
         Codename::create(['var' => 'title', 'value' => 'Judul site',]);
         Codename::create(['var' => 'owner', 'value' => 'Putra Rahmadi',]);

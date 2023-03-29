@@ -7,7 +7,7 @@
 
 <body>
     @include('partials.navbar')
-    <div class="container mt-4">
+    <div class="container mt-4 text-center">
         @yield('header')
     </div>
     <div class="container mt-4">

@@ -1,15 +1,18 @@
 /* bootstrap links colors*/
-.pagination > li > a,
-.pagination > li > span {
-    color: whitesmoke;
+.pagination .page-link {
+    color: #212529;
+    background-color: #fff;
+    border-color: #fff;
 }
 
-.pagination > .active > a,
-.pagination > .active > a:focus,
-.pagination > .active > a:hover,
-.pagination > .active > span,
-.pagination > .active > span:focus,
-.pagination > .active > span:hover {
+.pagination .page-link:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.pagination .page-item.active .page-link {
+    color: #fff;
     background-color: #dc3545;
     border-color: #dc3545;
 }
