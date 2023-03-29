@@ -5,7 +5,7 @@
     @include('partials.head')
 </head>
 
-<body>
+<body class="pt-5">
     @include('partials.navbar')
     <div class="container mt-4 text-center">
         @yield('header')

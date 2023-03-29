@@ -32,7 +32,7 @@
         <div class="card mb-3">
             <a href="/blog/{{ $posts->first()->slug }}" class="text-decoration-none">
                 <img class="card-img-top"
-                    src="https://source.unsplash.com/1200x300?{{ $posts->first()->category->name }},{{ $posts->first()->title }}"
+                    src="https://source.unsplash.com/1200x450?{{ $posts->first()->category->name }},{{ $posts->first()->title }}"
                     alt="{{ $posts->first()->title }}">
             </a>
             <div class="card-body">
@@ -52,8 +52,6 @@
                         <a href="/category/{{ $posts->first()->category->slug }}" class="text-danger">{{
                             $posts->first()->category->name
                             }}</a>
-                        <small><i>{{
-                                $posts->first()->created_at->diffForHumans() }}</i></small>
                     </small>
                 </p>
                 <div class="w-100 text-center">
@@ -62,9 +60,16 @@
                 <p class="card-text text-justify">{{ $posts->first()->excerpt }}</p>
             </div>
             <div class="card-footer w-100">
-                <div class="text-right">
-                    <a href="/blog/{{ $posts->first()->slug }}" class="text-decoration-none btn btn-sm btn-danger">Read
-                        more</a>
+                <div class="d-flex align-items-end justify-content-between">
+                    <small class="text-muted pb-2">
+                        <i>{{
+                            $posts->first()->created_at->diffForHumans() }}</i>
+                    </small>
+                    <div class="text-right">
+                        <a href="/blog/{{ $posts->first()->slug }}"
+                            class="text-decoration-none btn btn-sm btn-danger">Read
+                            more</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,7 +80,7 @@
         <div class="card d-flex flex-column justify-content-between align-items-end h-100">
             <a href="/blog/{{ $post->slug }}" class="text-decoration-none">
                 <img class="card-img-top"
-                    src="https://source.unsplash.com/800x400?{{ $post->category->name }},{{ $post->title }}"
+                    src="https://source.unsplash.com/800x300?{{ $post->category->name }},{{ $post->title }}"
                     alt="{{ $post->title }}">
             </a>
             <div class="card-body">
@@ -94,8 +99,6 @@
                         in
                         <a href="/category/{{ $post->category->slug }}" class="text-danger">{{ $post->category->name
                             }}</a>
-                        <small><i>{{
-                                $post->created_at->diffForHumans() }}</i></small>
                     </small>
                 </p>
                 <div class="w-100 text-center">
@@ -104,9 +107,15 @@
                 <p class="card-text text-justify">{{ $post->excerpt }}</p>
             </div>
             <div class="card-footer w-100">
-                <div class="text-right">
-                    <a href="/blog/{{ $post->slug }}" class="text-decoration-none btn btn-sm btn-danger">Read
-                        more</a>
+                <div class="d-flex align-items-end justify-content-between">
+                    <small class="text-muted pb-2">
+                        <i>{{
+                            $post->created_at->diffForHumans() }}</i>
+                    </small>
+                    <div class="text-right">
+                        <a href="/blog/{{ $post->slug }}" class="text-decoration-none btn btn-sm btn-danger">Read
+                            more</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,12 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.3",
+        "components/jquery": "^3.6",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "itsgoingd/clockwork": "^5.1",
         "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "twbs/bootstrap": "5.3.0-alpha2",
+        "twbs/bootstrap-icons": "^1.10"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
@@ -26,7 +29,8 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "vendor-dir": "vendor"
     },
     "extra": {
         "laravel": {
@@ -57,6 +61,12 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "cp -r vendor/twbs/bootstrap/dist/css public/vendor/twbs/bootstrap/dist/css",
+            "cp -r vendor/twbs/bootstrap/dist/js public/vendor/twbs/bootstrap/dist/js",
+            "cp -r vendor/twbs/bootstrap-icons/font public/vendor/twbs/bootstrap-icons/font",
+            "cp -r vendor/components/jquery public/vendor/components/jquery"
         ]
     }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-xl navbar-dark bg-danger">
+<nav class="navbar fixed-top navbar-expand-xl navbar-dark bg-danger">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">{{ $site_descriptions->title }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -34,6 +34,14 @@
                 </li>
                 <li class="nav-item{{ $menu=='About'?' active':'' }}">
                     <a class="nav-link" href="{{ url('/about') }}">About</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mr-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/login') }}"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </li>
+                <li class="nav-item py-1">
+                    <div class="vr h-100 mx-2 border-left border-light"></div>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/blog" method="GET">
