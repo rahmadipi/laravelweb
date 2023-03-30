@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PortfolioController;
 
 /*
@@ -35,3 +36,5 @@ Route::get('/portfolio/{portfolio:slug}', [PortfolioController::class, 'show']);
 Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/register', [RegisterController::class, 'index']);

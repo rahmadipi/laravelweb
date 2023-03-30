@@ -1,34 +1,40 @@
 @extends('layouts.list')
 
 @section('header')
-<h1>Halaman {{ $menu }}</h1>
-<div class="w-100">
-    <hr class="my-3">
+<div class="row">
+    <h1>Halaman {{ $menu }}</h1>
+    <div class="w-100">
+        <hr class="my-1">
+    </div>
+    @isset($author)
+    <small>Posts by <a href="/author/{{ $author->username }}" class="text-decoration-none text-danger">{{ $author->name
+            }}</a>
+    </small>
+    <div class="w-100">
+        <hr class="my-1">
+    </div>
+    @endisset
+    @isset($category)
+    <small>Post in <a href="/category/{{ $category->slug }}" class="text-decoration-none text-danger">{{ $category->name
+            }}</a>
+    </small>
+    <div class="w-100">
+        <hr class="my-1">
+    </div>
+    @endisset
+    @if(request('search') and request('search')!='')
+    <small>with keyword <b>{{ request('search') }}</b></small>
+    <div class="w-100">
+        <hr class="my-1">
+    </div>
+    @endisset
 </div>
-@isset($author)
-<h4>Posts by <a href="/author/{{ $author->username }}">{{ $author->name }}</a></h4>
-<div class="w-100">
-    <hr class="my-1">
-</div>
-@endisset
-@isset($category)
-<h4>Post in <a href="/category/{{ $category->slug }}">{{ $category->name }}</a></h4>
-<div class="w-100">
-    <hr class="my-1">
-</div>
-@endisset
-@if(request('search') and request('search')!='')
-<h4>with keyword <b>{{ request('search') }}</b></h4>
-<div class="w-100">
-    <hr class="my-1">
-</div>
-@endisset
 @endsection
 
 @section('content')
 <div class="row">
     @if($posts->count())
-    <div class="col-xs-12 px-3">
+    <div class="col-xs-12">
         <div class="card mb-3">
             <a href="/blog/{{ $posts->first()->slug }}" class="text-decoration-none">
                 <img class="card-img-top"
@@ -42,20 +48,22 @@
                         }}</a>
                 </h4>
                 <div class="w-100">
-                    <hr class="mb-0">
+                    <hr class="w-75 my-0 mx-auto">
                 </div>
                 <p class="card-text text-center mb-0">
                     <small class="text-muted">
-                        By <a href="/author/{{ $posts->first()->author->username }}" class="text-danger">{{
+                        By <a href="/author/{{ $posts->first()->author->username }}"
+                            class="text-decoration-none text-danger">{{
                             $posts->first()->author->name
                             }}</a> in
-                        <a href="/category/{{ $posts->first()->category->slug }}" class="text-danger">{{
+                        <a href="/category/{{ $posts->first()->category->slug }}"
+                            class="text-decoration-none text-danger">{{
                             $posts->first()->category->name
                             }}</a>
                     </small>
                 </p>
                 <div class="w-100 text-center">
-                    <hr class="w-50 mt-0 mb-1 mx-auto">
+                    <hr class="w-75 mt-0 mb-1 mx-auto">
                 </div>
                 <p class="card-text text-justify">{{ $posts->first()->excerpt }}</p>
             </div>
@@ -66,8 +74,7 @@
                             $posts->first()->created_at->diffForHumans() }}</i>
                     </small>
                     <div class="text-right">
-                        <a href="/blog/{{ $posts->first()->slug }}"
-                            class="text-decoration-none btn btn-sm btn-danger">Read
+                        <a href="/blog/{{ $posts->first()->slug }}" class="btn btn-sm btn-danger">Read
                             more</a>
                     </div>
                 </div>
@@ -89,20 +96,21 @@
                         }}</a>
                 </h4>
                 <div class="w-100">
-                    <hr class="mb-0">
+                    <hr class="w-75 my-0 mx-auto">
                 </div>
                 <p class="card-text text-center mb-0">
                     <small class="text-muted">
-                        By <a href="/author/{{ $post->author->username }}" class="text-danger">{{
+                        By <a href="/author/{{ $post->author->username }}" class="text-decoration-none text-danger">{{
                             $post->author->name
                             }}</a>
                         in
-                        <a href="/category/{{ $post->category->slug }}" class="text-danger">{{ $post->category->name
+                        <a href="/category/{{ $post->category->slug }}" class="text-decoration-none text-danger">{{
+                            $post->category->name
                             }}</a>
                     </small>
                 </p>
                 <div class="w-100 text-center">
-                    <hr class="w-50 mt-0 mb-1 mx-auto">
+                    <hr class="w-75 mt-0 mb-1 mx-auto">
                 </div>
                 <p class="card-text text-justify">{{ $post->excerpt }}</p>
             </div>
@@ -113,7 +121,7 @@
                             $post->created_at->diffForHumans() }}</i>
                     </small>
                     <div class="text-right">
-                        <a href="/blog/{{ $post->slug }}" class="text-decoration-none btn btn-sm btn-danger">Read
+                        <a href="/blog/{{ $post->slug }}" class="btn btn-sm btn-danger">Read
                             more</a>
                     </div>
                 </div>
@@ -130,23 +138,24 @@
 @endsection
 
 @section('footer')
-@if(isset($author) or isset($category))
-<div class="w-100">
-    <hr class="my-3">
-</div>
-<div class="flex-row">
-    <div class="d-flex justify-content-center">
-        <a href="/blog" class="btn btn-md btn-danger">Lihat semua blog post</a>
+<div class="row">
+    @if(isset($author) or isset($category))
+    <div class="w-100">
+        <hr class="my-3">
     </div>
-</div>
-@endif
-<div class="w-100">
-    <hr class="my-3">
-</div>
-<div class="flex-row">
-    <div class="d-flex justify-content-end">
-        {{ $posts->links() }}
+    <div class="flex-row">
+        <div class="d-flex justify-content-center">
+            <a href="/blog" class="btn btn-md btn-danger">Lihat semua blog post</a>
+        </div>
     </div>
-</div>
+    @endif
+    <div class="w-100">
+        <hr class="my-3">
+    </div>
+    <div class="flex-row">
+        <div class="d-flex justify-content-end">
+            {{ $posts->links() }}
+        </div>
+    </div>
 </div>
 @endsection

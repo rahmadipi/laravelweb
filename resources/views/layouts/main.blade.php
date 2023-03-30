@@ -3,6 +3,7 @@
 
 <head>
     @include('partials.head')
+    @yield('head')
 </head>
 
 <body class="pt-5">
