@@ -37,8 +37,8 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mr-2">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/login') }}"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                <li class="nav-item{{ $menu=='Login'?' active':'' }}">
+                    <a class="nav-link" href="{{ url('/login') }}">Login <i class="bi bi-box-arrow-in-right"></i></a>
                 </li>
                 <li class="nav-item py-1">
                     <div class="vr h-100 mx-2 border-left border-light"></div>

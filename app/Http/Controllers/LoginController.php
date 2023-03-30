@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Codename;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class LoginController extends Controller
 {
-    private $menu = "Home";
+    private $menu = "Login";
 
     public function index()
     {
-        return view('modules/home/home', [
+        return view('modules/login/login', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
         ]);
