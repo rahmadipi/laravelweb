@@ -24,7 +24,8 @@
     <div class="w-100">
         <hr class="mb-1 mt-0">
     </div>
-    <img class="img-fluid" src="https://source.unsplash.com/1200x500?{{ $post->category->name }},{{ $post->title }}"
+    <img class="img-fluid"
+        src="https://source.unsplash.com/random/1200x500/?{{ $post->category->name }},{{ $post->title }}"
         alt="{{ $post->title }}">
     <div class="w-100">
         <hr class="my-1">

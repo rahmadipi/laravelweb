@@ -15,9 +15,9 @@
 
                 <div class="form-floating">
                     <input type="text" name="name" id="name"
-                        class="form-control rounded-top @error('name') is-invalid @enderror" id="floatingName"
-                        placeholder="Name" value="{{ old('name') }}">
-                    <label for="floatingName">Name</label>
+                        class="form-control rounded-top @error('name') is-invalid @enderror" placeholder="Name"
+                        value="{{ old('name') }}" autofocus>
+                    <label for="name">Name</label>
                     @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -26,9 +26,9 @@
                 </div>
                 <div class="form-floating">
                     <input type="text" name="username" id="username"
-                        class="form-control @error('username') is-invalid @enderror" id="floatingUsername"
-                        placeholder="Username" value="{{ old('username') }}">
-                    <label for="floatingUsername">Username</label>
+                        class="form-control @error('username') is-invalid @enderror" placeholder="Username"
+                        value="{{ old('username') }}">
+                    <label for="username">Username</label>
                     @error('username')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -37,9 +37,9 @@
                 </div>
                 <div class="form-floating">
                     <input type="email" name="email" id="email"
-                        class="form-control @error('email') is-invalid @enderror" id="floatingInput"
-                        placeholder="name@example.com" value="{{ old('email') }}">
-                    <label for="floatingInput">Email address</label>
+                        class="form-control @error('email') is-invalid @enderror" placeholder="name@example.com"
+                        value="{{ old('email') }}">
+                    <label for="email">Email address</label>
                     @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -49,8 +49,8 @@
                 <div class="form-floating">
                     <input type="password" name="password" id="password"
                         class="form-control rounded-bottom @error('password') is-invalid @enderror"
-                        id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                        placeholder="Password">
+                    <label for="password">Password</label>
                     @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}

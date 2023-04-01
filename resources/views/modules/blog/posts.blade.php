@@ -38,7 +38,7 @@
         <div class="card mb-3">
             <a href="/blog/{{ $posts->first()->slug }}" class="text-decoration-none">
                 <img class="card-img-top"
-                    src="https://source.unsplash.com/1200x450?{{ $posts->first()->category->name }},{{ $posts->first()->title }}"
+                    src="https://source.unsplash.com/random/1200x450/?{{ $posts->first()->category->name }},{{ $posts->first()->title }}"
                     alt="{{ $posts->first()->title }}">
             </a>
             <div class="card-body">
@@ -87,7 +87,7 @@
         <div class="card d-flex flex-column justify-content-between align-items-end h-100">
             <a href="/blog/{{ $post->slug }}" class="text-decoration-none">
                 <img class="card-img-top"
-                    src="https://source.unsplash.com/800x300?{{ $post->category->name }},{{ $post->title }}"
+                    src="https://source.unsplash.com/random/800x300/?{{ $post->category->name }},{{ $post->title }}"
                     alt="{{ $post->title }}">
             </a>
             <div class="card-body">
