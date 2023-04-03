@@ -11,7 +11,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('modules/dashboard/dashboard', [
+        return view('modules/auth/dashboard/index', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
         ]);
