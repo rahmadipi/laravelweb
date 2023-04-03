@@ -46,4 +46,5 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
+Route::get('/dashboard/posts/createSlug', [PostController::class, 'createSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', PostController::class)->middleware('auth');

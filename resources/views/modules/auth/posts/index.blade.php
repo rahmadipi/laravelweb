@@ -9,6 +9,18 @@
     <div class="btn-toolbar mb-2 mb-md-0">
     </div>
 </div>
+<div class="d-flex">
+    <a href="{{ url('/dashboard/posts/create') }}" class="btn btn-sm btn-primary mb-2">
+        <i data-feather="file-plus"></i> Create new post</a>
+</div>
+
+@if(session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ session('success') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
