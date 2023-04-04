@@ -37,9 +37,16 @@
     <div class="col-xs-12">
         <div class="card mb-3">
             <a href="/blog/{{ $posts->first()->slug }}" class="text-decoration-none">
+                @if($posts->first()->image)
+                <div style="max-height:450px;overflow:hidden;">
+                    <img class="img-fluid" src="{{ asset('storage/'.$posts->first()->image) }}"
+                        alt="{{ $posts->first()->title }}">
+                </div>
+                @else
                 <img class="card-img-top"
                     src="https://source.unsplash.com/random/1200x450/?{{ $posts->first()->category->name }},{{ $posts->first()->title }}"
                     alt="{{ $posts->first()->title }}">
+                @endif
             </a>
             <div class="card-body">
                 <h4 class="card-title text-center">
@@ -86,9 +93,15 @@
     <div class="col-md-4 col-xs-12 mb-3">
         <div class="card d-flex flex-column justify-content-between align-items-end h-100">
             <a href="/blog/{{ $post->slug }}" class="text-decoration-none">
+                @if($post->image)
+                <div style="max-height:300px;overflow:hidden;">
+                    <img class="img-fluid" src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}">
+                </div>
+                @else
                 <img class="card-img-top"
                     src="https://source.unsplash.com/random/800x300/?{{ $post->category->name }},{{ $post->title }}"
                     alt="{{ $post->title }}">
+                @endif
             </a>
             <div class="card-body">
                 <h4 class="card-title text-center">

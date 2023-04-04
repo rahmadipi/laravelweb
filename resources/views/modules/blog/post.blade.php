@@ -24,9 +24,15 @@
     <div class="w-100">
         <hr class="mb-1 mt-0">
     </div>
+    @if($post->image)
+    <div style="max-height:500px;overflow:hidden;">
+        <img class="img-fluid" src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}">
+    </div>
+    @else
     <img class="img-fluid"
         src="https://source.unsplash.com/random/1200x500/?{{ $post->category->name }},{{ $post->title }}"
         alt="{{ $post->title }}">
+    @endif
     <div class="w-100">
         <hr class="my-1">
     </div>
