@@ -42,8 +42,14 @@
                 <td>
                     <a href="{{ url('/dashboard/posts/'.$post->slug) }}"><span class="badge bg-info"><i
                                 data-feather="eye"></i></span></a>
-                    <a href=""><span class="badge bg-warning"><i data-feather="edit"></i></span></a>
-                    <a href=""><span class="badge bg-danger"><i data-feather="trash-2"></i></span></a>
+                    <a href="{{ url('/dashboard/posts/'.$post->slug.'/edit') }}"><span class="badge bg-warning"><i
+                                data-feather="edit"></i></span></a>
+                    <form action="{{ url('/dashboard/posts/'.$post->slug) }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="badge bg-danger border-0" onclick="return confirm('Are you sure ?')"><i
+                                data-feather="trash-2"></i></button>
+                    </form>
                 </td>
             </tr>
             @endforeach

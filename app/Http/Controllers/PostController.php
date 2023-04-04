@@ -68,6 +68,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        if ($post->author->id !== auth()->user()->id) {
+            abort(403);
+        }
+
         return view('modules/auth/posts/show', [
             "site_descriptions" => Codename::siteDescriptions(),
             "post" => $post,
@@ -82,7 +86,15 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        if ($post->author->id !== auth()->user()->id) {
+            abort(403);
+        }
+
+        return view('modules/auth/posts/edit', [
+            "site_descriptions" => Codename::siteDescriptions(),
+            "post" => $post,
+            "categories" => Category::all(),
+        ]);
     }
 
     /**
@@ -94,7 +106,29 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        if ($post->author->id !== auth()->user()->id) {
+            abort(403);
+        }
+
+        $rules = [
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'body' => 'required',
+        ];
+
+        if ($request->slug != $post->slug) {
+            $rules['slug'] = 'unique:posts|required';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['author_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['body']), 200, '...');
+
+        Post::where('id', $post->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/posts')->with('success', 'Post has been updated.');
     }
 
     /**
@@ -105,7 +139,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if ($post->author->id !== auth()->user()->id) {
+            abort(403);
+        }
+
+        Post::destroy($post->id);
+
+        return redirect('/dashboard/posts')->with('success', 'Post has been deleted.');
     }
 
     public function createSlug(Request $request)

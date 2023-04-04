@@ -22,8 +22,14 @@
         <a href="{{ url('/dashboard/posts/') }}"><span class="btn btn-sm btn-dark"><i data-feather="arrow-left"></i>
                 Back to
                 posts</span></a>
-        <a href=""><span class="btn btn-sm btn-warning text-light"><i data-feather="edit"></i> Edit post</span></a>
-        <a href=""><span class="btn btn-sm btn-danger"><i data-feather="trash-2"></i> Delete post</span></a>
+        <a href="{{ url('/dashboard/posts/'.$post->slug.'/edit') }}"><span class="btn btn-sm btn-warning text-light"><i
+                    data-feather="edit"></i> Edit post</span></a>
+        <form action="{{ url('/dashboard/posts/'.$post->slug) }}" method="POST" class="d-inline">
+            @method('delete')
+            @csrf
+            <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure ?')"><i
+                    data-feather="trash-2"></i> Delete post</button>
+        </form>
     </div>
     <div class="col-xs-12">
         <div class="w-100">
