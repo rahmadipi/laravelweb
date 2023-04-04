@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Codename;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller
@@ -125,7 +126,18 @@ class PostController extends Controller
             $rules['slug'] = 'unique:posts|required';
         }
 
+        if ($request->file('image')) {
+            $rules['image'] = 'image|file|max:1024';
+        }
+
         $validatedData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
 
         $validatedData['author_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['body']), 200, '...');
@@ -146,6 +158,10 @@ class PostController extends Controller
     {
         if ($post->author->id !== auth()->user()->id) {
             abort(403);
+        }
+
+        if ($post->image) {
+            Storage::delete($post->image);
         }
 
         Post::destroy($post->id);
