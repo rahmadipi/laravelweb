@@ -15,6 +15,8 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
+        $this->authorize('admin');
+
         return view('modules/auth/categories/index', [
             "site_descriptions" => Codename::siteDescriptions(),
             "categories" => Category::all(),
