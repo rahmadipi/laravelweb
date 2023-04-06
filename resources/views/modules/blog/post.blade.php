@@ -14,9 +14,9 @@
 </div>
 <div class="col-xs-12">
     <small class="text-muted">
-        By <a href="/author/{{ $post->author->username }}" class="text-decoration-none text-danger">{{
+        By <a href="{{ url('/author/'.$post->author->username) }}" class="text-decoration-none text-danger">{{
             $post->author->name }}</a> in
-        <a href="/category/{{ $post->category->slug }}" class="text-decoration-none text-danger">{{
+        <a href="{{ url('/category/'.$post->category->slug) }}" class="text-decoration-none text-danger">{{
             $post->category->name }}</a>
         <small><i>{{
                 $post->created_at->diffForHumans() }}</i></small>
@@ -46,7 +46,7 @@
     </div>
     <div class="flex-row">
         <div class="d-flex justify-content-start">
-            <a href="/blog" class="btn btn-md btn-danger">Kembali ke menu blog</a>
+            <a href="{{ url('/blog') }}" class="btn btn-md btn-danger">Kembali ke menu blog</a>
         </div>
     </div>
 </div>

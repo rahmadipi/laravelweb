@@ -10,7 +10,7 @@
 @section('content')
 @foreach ($portfolios as $portfolio)
 <article class="mb-5">
-    <a href="/portfolio/{{ $portfolio->slug }}">
+    <a href="{{ url('/portfolio/'.$portfolio->slug) }}">
         <h3>{{ $portfolio->title }}</h3>
     </a>
     <p>{{ $portfolio->description }}</p>

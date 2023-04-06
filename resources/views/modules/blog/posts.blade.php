@@ -7,7 +7,8 @@
         <hr class="my-1">
     </div>
     @isset($author)
-    <small>Posts by <a href="/author/{{ $author->username }}" class="text-decoration-none text-danger">{{ $author->name
+    <small>Posts by <a href="{{ url('/author/'.$author->username) }}" class="text-decoration-none text-danger">{{
+            $author->name
             }}</a>
     </small>
     <div class="w-100">
@@ -15,7 +16,8 @@
     </div>
     @endisset
     @isset($category)
-    <small>Post in <a href="/category/{{ $category->slug }}" class="text-decoration-none text-danger">{{ $category->name
+    <small>Post in <a href="{{ url('/category/'.$category->slug) }}" class="text-decoration-none text-danger">{{
+            $category->name
             }}</a>
     </small>
     <div class="w-100">
@@ -36,7 +38,7 @@
     @if($posts->count())
     <div class="col-xs-12">
         <div class="card mb-3">
-            <a href="/blog/{{ $posts->first()->slug }}" class="text-decoration-none">
+            <a href="{{ url('/blog/'.$posts->first()->slug) }}" class="text-decoration-none">
                 @if($posts->first()->image)
                 <div style="max-height:450px;overflow:hidden;">
                     <img class="img-fluid" src="{{ asset('storage/'.$posts->first()->image) }}"
@@ -50,7 +52,7 @@
             </a>
             <div class="card-body">
                 <h4 class="card-title text-center">
-                    <a href="/blog/{{ $posts->first()->slug }}" class="text-decoration-none text-danger">{{
+                    <a href="{{ url('/blog/'.$posts->first()->slug) }}" class="text-decoration-none text-danger">{{
                         $posts->first()->title
                         }}</a>
                 </h4>
@@ -59,11 +61,11 @@
                 </div>
                 <p class="card-text text-center mb-0">
                     <small class="text-muted">
-                        By <a href="/author/{{ $posts->first()->author->username }}"
+                        By <a href="{{ url('/author/'.$posts->first()->author->username) }}"
                             class="text-decoration-none text-danger">{{
                             $posts->first()->author->name
                             }}</a> in
-                        <a href="/category/{{ $posts->first()->category->slug }}"
+                        <a href="{{ url('/category/'.$posts->first()->category->slug) }}"
                             class="text-decoration-none text-danger">{{
                             $posts->first()->category->name
                             }}</a>
@@ -81,7 +83,7 @@
                             $posts->first()->created_at->diffForHumans() }}</i>
                     </small>
                     <div class="text-right">
-                        <a href="/blog/{{ $posts->first()->slug }}" class="btn btn-sm btn-danger">Read
+                        <a href="{{ url('/blog/'.$posts->first()->slug) }}" class="btn btn-sm btn-danger">Read
                             more</a>
                     </div>
                 </div>
@@ -92,7 +94,7 @@
     @foreach ($posts->skip(1) as $post)
     <div class="col-md-4 col-xs-12 mb-3">
         <div class="card d-flex flex-column justify-content-between align-items-end h-100">
-            <a href="/blog/{{ $post->slug }}" class="text-decoration-none">
+            <a href="{{ url('/blog/'.$post->slug) }}" class="text-decoration-none">
                 @if($post->image)
                 <div style="max-height:300px;overflow:hidden;">
                     <img class="img-fluid" src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}">
@@ -105,7 +107,7 @@
             </a>
             <div class="card-body">
                 <h4 class="card-title text-center">
-                    <a href="/blog/{{ $post->slug }}" class="text-decoration-none text-danger">{{ $post->title
+                    <a href="{{ url('/blog/'.$post->slug) }}" class="text-decoration-none text-danger">{{ $post->title
                         }}</a>
                 </h4>
                 <div class="w-100">
@@ -113,11 +115,13 @@
                 </div>
                 <p class="card-text text-center mb-0">
                     <small class="text-muted">
-                        By <a href="/author/{{ $post->author->username }}" class="text-decoration-none text-danger">{{
+                        By <a href="{{ url('/author/'.$post->author->username) }}"
+                            class="text-decoration-none text-danger">{{
                             $post->author->name
                             }}</a>
                         in
-                        <a href="/category/{{ $post->category->slug }}" class="text-decoration-none text-danger">{{
+                        <a href="{{ url('/category/'.$post->category->slug) }}"
+                            class="text-decoration-none text-danger">{{
                             $post->category->name
                             }}</a>
                     </small>
@@ -134,7 +138,7 @@
                             $post->created_at->diffForHumans() }}</i>
                     </small>
                     <div class="text-right">
-                        <a href="/blog/{{ $post->slug }}" class="btn btn-sm btn-danger">Read
+                        <a href="{{ url('/blog/'.$post->slug) }}" class="btn btn-sm btn-danger">Read
                             more</a>
                     </div>
                 </div>
@@ -158,7 +162,7 @@
     </div>
     <div class="flex-row">
         <div class="d-flex justify-content-center">
-            <a href="/blog" class="btn btn-md btn-danger">Lihat semua blog post</a>
+            <a href="{{ url('/blog') }}" class="btn btn-md btn-danger">Lihat semua blog post</a>
         </div>
     </div>
     @endif

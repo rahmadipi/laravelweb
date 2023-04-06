@@ -14,7 +14,7 @@
         @foreach ($categories as $category)
         <div class="col-lg-4 col-xs-12">
             <div class="card mb-3">
-                <a href="/category/{{ $category->slug }}" class="text-decoration-none">
+                <a href="{{ url('/category/'.$category->slug) }}" class="text-decoration-none">
                     <img class="card-img-top border border-danger rounded"
                         src="https://source.unsplash.com/random/250x150/?{{ $category->name }}"
                         alt="{{ $category->name }}">
