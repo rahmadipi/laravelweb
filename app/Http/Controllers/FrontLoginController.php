@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller
+class FrontLoginController extends Controller
 {
     private $menu = "Login";
 
     public function index()
     {
-        return view('modules/login/login', [
+        return view('modules/front/login/login', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
         ]);

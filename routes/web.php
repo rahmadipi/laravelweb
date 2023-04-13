@@ -1,15 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\FrontBlogController;
+use App\Http\Controllers\FrontHomeController;
+use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\FrontAboutController;
+use App\Http\Controllers\FrontLoginController;
+use App\Http\Controllers\FrontCategoryController;
+use App\Http\Controllers\FrontRegisterController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\FrontPortfolioController;
 use App\Http\Controllers\AdminCategoryController;
 
 /*
@@ -23,31 +23,29 @@ use App\Http\Controllers\AdminCategoryController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/', [FrontHomeController::class, 'index']);
+Route::get('/home', [FrontHomeController::class, 'index']);
 
-Route::get('/blog', [BlogController::class, 'index']);
-Route::get('/blog/{post:slug}', [BlogController::class, 'show']);
-Route::get('/category/{category:slug}', [BlogController::class, 'byCategory']);
-Route::get('/author/{user:username}', [BlogController::class, 'byAuthor']);
+Route::get('/blog', [FrontBlogController::class, 'index']);
+Route::get('/blog/{post:slug}', [FrontBlogController::class, 'show']);
 
-Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category', [FrontCategoryController::class, 'index']);
 
-Route::get('/portfolio', [PortfolioController::class, 'index']);
-Route::get('/portfolio/{portfolio:slug}', [PortfolioController::class, 'show']);
+Route::get('/portfolio', [FrontPortfolioController::class, 'index']);
+Route::get('/portfolio/{portfolio:slug}', [FrontPortfolioController::class, 'show']);
 
-Route::get('/about', [AboutController::class, 'index']);
+Route::get('/about', [FrontAboutController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/login', [FrontLoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [FrontLoginController::class, 'authenticate'])->middleware('guest');
+Route::post('/logout', [FrontLoginController::class, 'logout'])->middleware('auth');
 
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [FrontRegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [FrontRegisterController::class, 'store'])->middleware('guest');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', [AdminDashboardController::class, 'index'])->middleware('auth');
 
-Route::get('/dashboard/posts/createSlug', [PostController::class, 'createSlug'])->middleware('auth');
-Route::resource('/dashboard/posts', PostController::class)->middleware('auth');
+Route::get('/dashboard/posts/createSlug', [AdminBlogController::class, 'createSlug'])->middleware('auth');
+Route::resource('/dashboard/posts', AdminBlogController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');

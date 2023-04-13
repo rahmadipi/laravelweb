@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
-class PostController extends Controller
+class AdminBlogController extends Controller
 {
     /**
      * Display a listing of the resource.

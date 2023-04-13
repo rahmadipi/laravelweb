@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-    @include('partials.head')
+    @include('partials.front.head')
     @yield('head')
 </head>
 
 <body class="pt-5">
-    @include('partials.navbar')
+    @include('partials.front.navbar')
     @yield('header')
     @yield('content')
 
     <div>
-        @include('partials.script')
+        @include('partials.front.script')
     </div>
 </body>
 

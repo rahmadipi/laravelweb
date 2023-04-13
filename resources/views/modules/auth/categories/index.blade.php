@@ -38,8 +38,6 @@
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->created_at }}</td>
                 <td>
-                    <a href="{{ url('/dashboard/categories/'.$category->slug) }}"><span class="badge bg-info"><i
-                                data-feather="eye"></i></span></a>
                     <a href="{{ url('/dashboard/categories/'.$category->slug.'/edit') }}"><span
                             class="badge bg-warning"><i data-feather="edit"></i></span></a>
                     <form action="{{ url('/dashboard/categories/'.$category->slug) }}" method="POST" class="d-inline">

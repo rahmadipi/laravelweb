@@ -14,9 +14,9 @@
 </div>
 <div class="col-xs-12">
     <small class="text-muted">
-        By <a href="{{ url('/author/'.$post->author->username) }}" class="text-decoration-none text-danger">{{
+        By <a href="{{ url('blog?author='.$post->author->username) }}" class="text-decoration-none text-danger">{{
             $post->author->name }}</a> in
-        <a href="{{ url('/category/'.$post->category->slug) }}" class="text-decoration-none text-danger">{{
+        <a href="{{ url('blog?category='.$post->category->slug) }}" class="text-decoration-none text-danger">{{
             $post->category->name }}</a>
         <small><i>{{
                 $post->created_at->diffForHumans() }}</i></small>

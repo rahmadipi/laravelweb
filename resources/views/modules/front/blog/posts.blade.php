@@ -2,34 +2,32 @@
 
 @section('header')
 <div class="row">
-    <h1>Halaman {{ $menu }}</h1>
+    <h1>{{ $menu }}</h1>
     <div class="w-100">
         <hr class="my-1">
     </div>
-    @isset($author)
-    <small>Posts by <a href="{{ url('/author/'.$author->username) }}" class="text-decoration-none text-danger">{{
-            $author->name
-            }}</a>
+    @if(request('author') and request('author')!='')
+    <small>Posts by <a href="{{ url('blog?author='.request('author')) }}" class="text-decoration-none text-danger">{{
+            request('author') }}</a>
     </small>
     <div class="w-100">
         <hr class="my-1">
     </div>
-    @endisset
-    @isset($category)
-    <small>Post in <a href="{{ url('/category/'.$category->slug) }}" class="text-decoration-none text-danger">{{
-            $category->name
-            }}</a>
+    @endif
+    @if(request('category') and request('category')!='')
+    <small>Post in <a href="{{ url('blog?category='.request('category')) }}" class="text-decoration-none text-danger">{{
+            request('category') }}</a>
     </small>
     <div class="w-100">
         <hr class="my-1">
     </div>
-    @endisset
+    @endif
     @if(request('search') and request('search')!='')
     <small>with keyword <b>{{ request('search') }}</b></small>
     <div class="w-100">
         <hr class="my-1">
     </div>
-    @endisset
+    @endif
 </div>
 @endsection
 
@@ -61,11 +59,11 @@
                 </div>
                 <p class="card-text text-center mb-0">
                     <small class="text-muted">
-                        By <a href="{{ url('/author/'.$posts->first()->author->username) }}"
+                        By <a href="{{ url('blog?author='.$posts->first()->author->username) }}"
                             class="text-decoration-none text-danger">{{
                             $posts->first()->author->name
                             }}</a> in
-                        <a href="{{ url('/category/'.$posts->first()->category->slug) }}"
+                        <a href="{{ url('blog?category='.$posts->first()->category->slug) }}"
                             class="text-decoration-none text-danger">{{
                             $posts->first()->category->name
                             }}</a>
@@ -115,12 +113,12 @@
                 </div>
                 <p class="card-text text-center mb-0">
                     <small class="text-muted">
-                        By <a href="{{ url('/author/'.$post->author->username) }}"
+                        By <a href="{{ url('blog?author='.$post->author->username) }}"
                             class="text-decoration-none text-danger">{{
                             $post->author->name
                             }}</a>
                         in
-                        <a href="{{ url('/category/'.$post->category->slug) }}"
+                        <a href="{{ url('blog?category='.$post->category->slug) }}"
                             class="text-decoration-none text-danger">{{
                             $post->category->name
                             }}</a>

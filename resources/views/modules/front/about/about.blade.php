@@ -2,7 +2,7 @@
 
 @section('header')
 <div class="container mt-4 text-center">
-    <h1>Halaman {{ $menu }}</h1>
+    <h1>{{ $menu }}</h1>
     <div class="w-100">
         <hr class="my-3">
     </div>

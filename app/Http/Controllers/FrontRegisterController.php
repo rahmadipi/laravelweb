@@ -7,13 +7,13 @@ use App\Models\Codename;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class FrontRegisterController extends Controller
 {
     private $menu = "Register";
 
     public function index()
     {
-        return view('modules/register/register', [
+        return view('modules/front/register/register', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
         ]);

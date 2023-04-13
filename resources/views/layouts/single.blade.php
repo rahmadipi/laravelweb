@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    @include('partials.head')
+    @include('partials.front.head')
 </head>
 
 <body class="pt-5">
-    @include('partials.navbar')
+    @include('partials.front.navbar')
     <div class="container mt-4 text-center">
         @yield('header')
     </div>
@@ -24,7 +24,7 @@
     </div>
 
     <div>
-        @include('partials.script')
+        @include('partials.front.script')
     </div>
 </body>
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Codename;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class AdminDashboardController extends Controller
 {
     private $menu = "Dashboard";
 
