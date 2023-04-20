@@ -206,9 +206,12 @@
 <footer class="container">
     <p class="float-end"><a href="#" class="text-decoration-none text-danger">Back to top <i
                 class="bi bi-arrow-up"></i></a></p>
-    <p>&copy; 2023-{{ now()->year }} {{ $site_descriptions->title }}. &middot; <a href="#"
+    <p>&copy; 2023-{{ now()->year }} {{ $site_descriptions->title }}.
+        <?php /*
+         &middot; <a href="#"
             class="text-decoration-none text-danger">Privacy</a> &middot;
         <a href="#" class="text-decoration-none text-danger">Terms</a>
+        */ ?>
     </p>
 </footer>
 @endsection

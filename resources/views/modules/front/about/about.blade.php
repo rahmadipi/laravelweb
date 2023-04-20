@@ -15,16 +15,19 @@
         <div class="col-lg-4 text-center">
             <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
                 role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
-                    dy=".3em">140x140</text>
+                <title>{{ $site_descriptions->owner }}</title>
+                <image width="140" height="140" xlink:href="{{ asset('storage/site-desc/owner.jpg') }}"></image>
             </svg>
 
             <h2 class="mt-3">{{ $site_descriptions->owner }}</h2>
-            <p>And lastly this, the third column of representative placeholder content.</p>
+            <p>an Indonesian Web Programmer.</p>
             <p class="fs-3">
-                <i class="bi bi-whatsapp"></i> <i class="bi bi-google"></i> <i class="bi bi-linkedin"></i> <i
-                    class="bi bi-github"></i>
+                <a href="https://wa.me/6289524469080" class="text-decoration-none" style="color:#51cd5d;"><i
+                        class="bi bi-whatsapp"></i></a> <a href="mailto:putrarahmadi615@gmail.com"
+                    class="text-decoration-none" style="color:#ea4335;"><i class="bi bi-google"></i></a> <a
+                    href="https://id.linkedin.com/in/putrarahmadi" class="text-decoration-none"
+                    style="color:#0a66c2;"><i class="bi bi-linkedin"></i> <a href="https://github.com/rahmadipi"
+                        class="text-decoration-none" style="color:#24292f;"><i class="bi bi-github"></i></a>
             </p>
         </div>
         <div class="col-lg-8">

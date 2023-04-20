@@ -16,6 +16,7 @@
                 <li class="nav-item">
                     <a class="nav-link{{ $menu=='Category'?' active':'' }}" href="{{ url('/category') }}">Category</a>
                 </li>
+                <?php /*
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,6 +33,7 @@
                         <a class="dropdown-item" href="{{ url('/portfolio') }}">Tampilkan semua</a>
                     </div>
                 </li>
+                */ ?>
                 <li class="nav-item">
                     <a class="nav-link{{ $menu=='About'?' active':'' }}" href="{{ url('/about') }}">About</a>
                 </li>
