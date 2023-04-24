@@ -6,17 +6,17 @@
     <div class="w-100">
         <hr class="my-1">
     </div>
-    @if(request('author') and request('author')!='')
+    @if($author)
     <small>Posts by <a href="{{ url('blog?author='.request('author')) }}" class="text-decoration-none text-danger">{{
-            request('author') }}</a>
+            $author->name }}</a>
     </small>
     <div class="w-100">
         <hr class="my-1">
     </div>
     @endif
-    @if(request('category') and request('category')!='')
+    @if($category)
     <small>Post in <a href="{{ url('blog?category='.request('category')) }}" class="text-decoration-none text-danger">{{
-            request('category') }}</a>
+            $category->name }}</a>
     </small>
     <div class="w-100">
         <hr class="my-1">
@@ -145,8 +145,9 @@
     </div>
     @endforeach
     @else
-    <div class="col-xs-12">
-        <div class="text-center">data kosong</div>
+    <div class="col-xs-12 text-center">
+        <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 4rem;"></i>
+        <div>No posts found!</div>
     </div>
     @endif
 </div>
@@ -154,7 +155,7 @@
 
 @section('footer')
 <div class="row">
-    @if(isset($author) or isset($category))
+    @if((request('author')) or (request('category')))
     <div class="w-100">
         <hr class="my-3">
     </div>

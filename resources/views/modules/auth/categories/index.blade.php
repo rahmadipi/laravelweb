@@ -1,6 +1,7 @@
 @extends('layouts.auth')
 
 @section('head')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 
 @section('content')
@@ -20,6 +21,8 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
+
+@include('sweetalert::alert')
 
 <div class="table-responsive">
     <table class="table table-striped table-sm">
@@ -43,7 +46,8 @@
                     <form action="{{ url('/dashboard/categories/'.$category->slug) }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="badge bg-danger border-0" onclick="return confirm('Are you sure ?')"><i
+                        <button id="delete-btn-{{ $loop->iteration }}" class="badge bg-danger border-0"
+                            onclick="return deleteConfirmation({{ $loop->iteration }})"><i
                                 data-feather="trash-2"></i></button>
                     </form>
                 </td>
@@ -55,4 +59,30 @@
 @endsection
 
 @section('foot')
+<script type="application/javascript">
+    function deleteConfirmation(id){
+        const btn = document.getElementById('delete-btn-'+id);
+        btn.disabled = true; // disable the button
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dc3545',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If user confirms deletion, submit the form
+                btn.form.submit();
+            } else {
+                // If user cancels deletion, enable the button again
+                btn.disabled = false;
+            }
+        });
+
+        // Return false to prevent the default form submission behavior
+        return false;
+    }
+</script>
 @endsection

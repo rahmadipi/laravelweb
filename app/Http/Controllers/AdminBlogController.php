@@ -8,6 +8,7 @@ use App\Models\Codename;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminBlogController extends Controller
@@ -63,6 +64,7 @@ class AdminBlogController extends Controller
 
         Post::create($validatedData);
 
+        Alert::success('Success', 'New post has been added.');
         return redirect('/dashboard/posts')->with('success', 'New post has been added.');
     }
 
@@ -145,6 +147,7 @@ class AdminBlogController extends Controller
         Post::where('id', $post->id)
             ->update($validatedData);
 
+        Alert::success('Success', 'Post has been updated.');
         return redirect('/dashboard/posts')->with('success', 'Post has been updated.');
     }
 
@@ -166,6 +169,7 @@ class AdminBlogController extends Controller
 
         Post::destroy($post->id);
 
+        Alert::success('Success', 'Post has been deleted.');
         return redirect('/dashboard/posts')->with('success', 'Post has been deleted.');
     }
 

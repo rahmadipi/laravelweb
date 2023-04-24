@@ -15,12 +15,24 @@ class FrontBlogController extends Controller
 
     public function index()
     {
+        $category = null;
+        $author = null;
+
+        if (request('category')) {
+            $category = Category::where('slug', request('category'))->first();
+        }
+        if (request('author')) {
+            $author = User::where('username', request('author'))->first();
+        }
+
         $posts = Post::latest()->filter(request(['search', 'category', 'author']));
 
         return view('modules/front/blog/posts', [
             "menu" => $this->menu,
             "site_descriptions" => Codename::siteDescriptions(),
             "posts" => $posts->paginate($this->perpage)->withQueryString(),
+            "category" => $category,
+            "author" => $author,
         ]);
     }
 
