@@ -137,6 +137,10 @@ class AdminCategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if ($category->image) {
+            Storage::delete($category->image);
+        }
+
         Category::destroy($category->id);
 
         Alert::success('Success', 'Category has been deleted.');
