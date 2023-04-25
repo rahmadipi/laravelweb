@@ -18,7 +18,7 @@ class CreateCarouselsTable extends Migration
             $table->enum('position', ['center', 'left', 'right']);
             $table->string('title');
             $table->text('body');
-            $table->string('image')->nullable;
+            $table->string('image')->nullable();
             $table->string('link');
             $table->string('url')->default('#');
             $table->timestamps();

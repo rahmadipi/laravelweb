@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             'position' => 'right',
             'title' => 'Example headline.',
             'body' => 'Some representative placeholder content for the first slide of the carousel.',
-            'image' => 'https://source.unsplash.com/random/1349x512/?animal',
+            'image' => NULL,
             'link' => 'Sign up today',
             'url' => '#',
         ]);
@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
             'position' => 'left',
             'title' => 'Example headline.',
             'body' => 'Some representative placeholder content for the first slide of the carousel.',
-            'image' => 'https://source.unsplash.com/random/1349x512/?fire',
+            'image' => NULL,
             'link' => 'Sign up today',
             'url' => '#',
         ]);
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
             'position' => 'center',
             'title' => 'Example headline.',
             'body' => 'Some representative placeholder content for the first slide of the carousel.',
-            'image' => 'https://source.unsplash.com/random/1349x512/?car',
+            'image' => NULL,
             'link' => 'Sign up today',
             'url' => '#',
         ]);

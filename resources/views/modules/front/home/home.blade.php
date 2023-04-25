@@ -34,7 +34,14 @@
         <div class="carousel-item @if($k==0) active @endif">
             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <image width="100%" height="100%" xlink:href="{{ $item->image }}"></image>
+
+                @if($item->image)
+                <image width="100%" height="100%" xlink:href="{{ asset('storage/'.$item->image) }}"></image>
+                @else
+                <image width="100%" height="100%" xlink:href="https://source.unsplash.com/random/1349x512/?animal">
+                </image>
+                @endif
+
                 <rect width="100%" height="100%" fill="#777" fill-opacity="0.5" />
             </svg>
 

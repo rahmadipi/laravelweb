@@ -29,6 +29,13 @@
                     Categories
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/carousels*')?'active':'' }}"
+                    href="{{ url('/dashboard/carousels') }}">
+                    <span data-feather="image"></span>
+                    Carousels
+                </a>
+            </li>
         </ul>
         @endcan
 

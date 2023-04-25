@@ -1,16 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\FrontBlogController;
 use App\Http\Controllers\FrontHomeController;
-use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\FrontAboutController;
 use App\Http\Controllers\FrontLoginController;
+use App\Http\Controllers\AdminCarouselController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\FrontCategoryController;
 use App\Http\Controllers\FrontRegisterController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\FrontPortfolioController;
-use App\Http\Controllers\AdminCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,5 @@ Route::resource('/dashboard/posts', AdminBlogController::class)->middleware('aut
 
 Route::get('/dashboard/categories/createSlug', [AdminCategoryController::class, 'createSlug'])->middleware('admin');
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+
+Route::resource('/dashboard/carousels', AdminCarouselController::class)->middleware('admin');
