@@ -46,7 +46,7 @@
     </div>
     <div class="flex-row">
         <div class="d-flex justify-content-start">
-            <a href="{{ url('/blog') }}" class="btn btn-md btn-danger">Kembali ke menu blog</a>
+            <a href="{{ url('/blog') }}" class="btn btn-md btn-danger">Back to blog posts</a>
         </div>
     </div>
 </div>

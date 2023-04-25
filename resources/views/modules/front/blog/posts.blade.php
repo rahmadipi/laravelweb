@@ -161,7 +161,7 @@
     </div>
     <div class="flex-row">
         <div class="d-flex justify-content-center">
-            <a href="{{ url('/blog') }}" class="btn btn-md btn-danger">Lihat semua blog post</a>
+            <a href="{{ url('/blog') }}" class="btn btn-md btn-danger">Back to blog posts</a>
         </div>
     </div>
     @endif
