@@ -24,54 +24,30 @@
 @section('content')
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-            aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        @foreach($carousel as $k=>$item)
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ $k }}" @if($k==0) class="active" @endif
+            aria-current="true" aria-label="Slide {{ ($k+1) }}"></button>
+        @endforeach
     </div>
     <div class="carousel-inner">
-        <div class="carousel-item active">
+        @foreach($carousel as $k=>$item)
+        <div class="carousel-item @if($k==0) active @endif">
             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%" fill="#777" />
+                <image width="100%" height="100%" xlink:href="{{ $item->image }}"></image>
+                <rect width="100%" height="100%" fill="#777" fill-opacity="0.5" />
             </svg>
 
             <div class="container">
-                <div class="carousel-caption text-start">
-                    <h1>Example headline.</h1>
-                    <p>Some representative placeholder content for the first slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-danger" href="#">Sign up today</a></p>
+                <div
+                    class="carousel-caption @if($item->position=='left') text-start @elseif($item->position=='right') text-end @endif">
+                    <h1>{{ $item->title }}</h1>
+                    <p>{{ $item->body }}</p>
+                    <p><a class="btn btn-lg btn-danger" href="{{ $item->url }}">{{ $item->link }}</a></p>
                 </div>
             </div>
         </div>
-        <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%" fill="#777" />
-            </svg>
-
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Another example headline.</h1>
-                    <p>Some representative placeholder content for the second slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-danger" href="#">Learn more</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <rect width="100%" height="100%" fill="#777" />
-            </svg>
-
-            <div class="container">
-                <div class="carousel-caption text-end">
-                    <h1>One more for good measure.</h1>
-                    <p>Some representative placeholder content for the third slide of this carousel.</p>
-                    <p><a class="btn btn-lg btn-danger" href="#">Browse gallery</a></p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -91,46 +67,71 @@
 
     <!-- Three columns of text below the carousel -->
     <div class="row">
-        <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-                role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
-                    dy=".3em">140x140</text>
-            </svg>
+        <div class="col-lg-4 d-flex flex-column">
+            <div class="mb-auto">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Blog</title>
+                    <image width="140" height="140" xlink:href="https://source.unsplash.com/random/140x140/?Blog">
+                    </image>
+                    <circle cx="70" cy="70" r="70" stroke="#dc3545" stroke-width="5" fill="none" />
+                </svg>
 
-            <h2>Heading</h2>
-            <p>Some representative placeholder content for the three columns of text below the carousel. This is the
-                first column.</p>
-            <p><a class="btn btn-danger" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-                role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
-                    dy=".3em">140x140</text>
-            </svg>
+                <h2 class="fw-bold">Blog</h2>
+                <p>
+                    We share our stories along the journey. So we can learn together and keep up-to-date with what's
+                    going on
+                    around us.
+                </p>
+            </div>
+            <div class="mt-auto">
+                <p><a class="btn btn-danger" href="{{ url('blog') }}">View Blog</a></p>
+            </div>
+        </div>
+        <div class="col-lg-4 d-flex flex-column">
+            <div class="mb-auto">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Services</title>
+                    <image width="140" height="140" xlink:href="https://source.unsplash.com/random/140x140/?Services">
+                    </image>
+                    <circle cx="70" cy="70" r="70" stroke="#dc3545" stroke-width="5" fill="none" />
+                </svg>
 
-            <h2>Heading</h2>
-            <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second
-                column.</p>
-            <p><a class="btn btn-danger" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-                role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
-                    dy=".3em">140x140</text>
-            </svg>
+                <h2 class="fw-bold">Services</h2>
+                <p>
+                    We provide services such as developing website for online profile, online business, and personalized
+                    information system; also digital design like logo and banner.
+                </p>
+            </div>
+            <div class="mt-auto">
+                <p><a class="btn btn-danger" href="#">View Services</a></p>
+            </div>
+        </div>
+        <div class="col-lg-4 d-flex flex-column">
+            <div class="mb-auto">
+                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140"
+                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Projects</title>
+                    <image width="140" height="140" xlink:href="https://source.unsplash.com/random/140x140/?Projects">
+                    </image>
+                    <circle cx="70" cy="70" r="70" stroke="#dc3545" stroke-width="5" fill="none" />
+                </svg>
 
-            <h2>Heading</h2>
-            <p>And lastly this, the third column of representative placeholder content.</p>
-            <p><a class="btn btn-danger" href="#">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
-
+                <h2 class="fw-bold">Projects</h2>
+                <p>
+                    We would show our portfolio of our services contains of projects currently we're working on and our
+                    previous projects. We will always growing and keep up-to-date with the current trends of technology.
+                </p>
+            </div>
+            <div class="mt-auto">
+                <p><a class="btn btn-danger" href="#">View Projects</a></p>
+            </div>
+        </div>
+    </div>
 
     <!-- START THE FEATURETTES -->
 
@@ -150,6 +151,7 @@
                 <title>Placeholder</title>
                 <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
                     dy=".3em">500x500</text>
+                <image width="100%" height="100%" xlink:href="https://source.unsplash.com/random/500x500/?cloud">
             </svg>
 
         </div>
@@ -171,6 +173,7 @@
                 <title>Placeholder</title>
                 <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
                     dy=".3em">500x500</text>
+                <image width="100%" height="100%" xlink:href="https://source.unsplash.com/random/500x500/?water">
             </svg>
 
         </div>
@@ -192,6 +195,7 @@
                 <title>Placeholder</title>
                 <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
                     dy=".3em">500x500</text>
+                <image width="100%" height="100%" xlink:href="https://source.unsplash.com/random/500x500/?leaf">
             </svg>
 
         </div>

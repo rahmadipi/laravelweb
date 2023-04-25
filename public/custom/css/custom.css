@@ -16,3 +16,8 @@
     background-color: #dc3545;
     border-color: #dc3545;
 }
+
+/* bootstrap nav active colors*/
+nav .dropdown-menu .dropdown-item:active {
+    background-color: #dc3545;
+}

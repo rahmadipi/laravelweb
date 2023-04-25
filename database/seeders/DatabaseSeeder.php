@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Carousel;
 use App\Models\Category;
 use App\Models\Codename;
 use App\Models\Portfolio;
@@ -28,6 +29,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(9)->create();
+
+        Category::create([
+            'name' => 'Undefined',
+            'slug' => 'undefined',
+            'description' => 'Tempat berbagi pengalaman dalam dunia programming.',
+        ]);
 
         Category::create([
             'name' => 'Blog',
@@ -69,6 +76,33 @@ class DatabaseSeeder extends Seeder
             'name' => 'Laravel 8',
             'slug' => 'laravel-8',
             'description' => 'PHP dengan framework Laravel 8.',
+        ]);
+
+        Carousel::create([
+            'position' => 'right',
+            'title' => 'Example headline.',
+            'body' => 'Some representative placeholder content for the first slide of the carousel.',
+            'image' => 'https://source.unsplash.com/random/1349x512/?animal',
+            'link' => 'Sign up today',
+            'url' => '#',
+        ]);
+
+        Carousel::create([
+            'position' => 'left',
+            'title' => 'Example headline.',
+            'body' => 'Some representative placeholder content for the first slide of the carousel.',
+            'image' => 'https://source.unsplash.com/random/1349x512/?fire',
+            'link' => 'Sign up today',
+            'url' => '#',
+        ]);
+
+        Carousel::create([
+            'position' => 'center',
+            'title' => 'Example headline.',
+            'body' => 'Some representative placeholder content for the first slide of the carousel.',
+            'image' => 'https://source.unsplash.com/random/1349x512/?car',
+            'link' => 'Sign up today',
+            'url' => '#',
         ]);
 
         Post::factory(100)->create();

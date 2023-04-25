@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Category;
 use App\Models\Codename;
 use Illuminate\Http\Request;
@@ -85,6 +86,10 @@ class AdminCategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        if ($category->slug === 'undefined') {
+            abort(403);
+        }
+
         return view('modules/auth/categories/edit', [
             "site_descriptions" => Codename::siteDescriptions(),
             "category" => $category,
@@ -100,6 +105,10 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        if ($category->slug === 'undefined') {
+            abort(403);
+        }
+
         $rules = [
             'name' => 'required|max:255',
             'description' => 'required',
@@ -137,9 +146,16 @@ class AdminCategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if ($category->slug === 'undefined') {
+            abort(403);
+        }
+
         if ($category->image) {
             Storage::delete($category->image);
         }
+
+        Post::where('category_id', $category->id)
+            ->update(['category_id' =>  1]);
 
         Category::destroy($category->id);
 
