@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('head')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
 @endsection
 
 @section('content')
@@ -46,7 +46,7 @@
             <hr class="mb-1 mt-0">
         </div>
         @if($post->image)
-        <div style="max-height:500px;overflow:hidden;">
+        <div style="max-height:450px;overflow:hidden;">
             <img class="img-fluid" src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}">
         </div>
         @else

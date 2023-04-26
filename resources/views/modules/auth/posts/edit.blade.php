@@ -17,6 +17,12 @@
     </div>
 </div>
 <div class="col-lg-8 col-xs-12">
+    <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <i class="flex-shrink-0 me-2" data-feather="info"></i>
+        <div>
+            Image size recommended should be 1200x450.
+        </div>
+    </div>
     <form method="POST" action="{{ url('/dashboard/posts/'.$post->slug) }}" enctype="multipart/form-data">
         @method('put')
         @csrf

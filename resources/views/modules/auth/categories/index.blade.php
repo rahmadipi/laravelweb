@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('head')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
 @endsection
 
 @section('content')
@@ -17,6 +17,7 @@
 
 @if(session()->has('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="flex-shrink-0 me-2" data-feather="check-circle"></i>
     {{ session('success') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>

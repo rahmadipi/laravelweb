@@ -10,4 +10,11 @@ class Carousel extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public static function enumPositions()
+    {
+        $positions = array('center', 'left', 'right');
+
+        return $positions;
+    }
 }

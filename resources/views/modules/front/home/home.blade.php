@@ -22,15 +22,16 @@
 @endsection
 
 @section('content')
+@if($carousels->count())
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        @foreach($carousel as $k=>$item)
+        @foreach($carousels as $k=>$item)
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ $k }}" @if($k==0) class="active" @endif
             aria-current="true" aria-label="Slide {{ ($k+1) }}"></button>
         @endforeach
     </div>
     <div class="carousel-inner">
-        @foreach($carousel as $k=>$item)
+        @foreach($carousels as $k=>$item)
         <div class="carousel-item @if($k==0) active @endif">
             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -65,6 +66,9 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+@else
+<div class="container mb-5"></div>
+@endif
 
 <!-- Marketing messaging and featurettes
   ================================================== -->
