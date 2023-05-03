@@ -109,6 +109,6 @@ class DatabaseSeeder extends Seeder
 
         Codename::create(['var' => 'title', 'value' => 'Judul site',]);
         Codename::create(['var' => 'owner', 'value' => 'Putra Rahmadi',]);
-        Codename::create(['var' => 'icon', 'value' => 'icon',]);
+        Codename::create(['var' => 'icon', 'value' => 'runknown',]);
     }
 }

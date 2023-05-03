@@ -13,7 +13,7 @@ class Codename extends Model
 
     public static function siteDescriptions()
     {
-        $site_descriptions = Codename::whereIn('var', ['title', 'owner'])
+        $site_descriptions = Codename::whereIn('var', ['title', 'owner', 'icon'])
             ->pluck('value', 'var')->toArray();
 
         return (object) $site_descriptions;
