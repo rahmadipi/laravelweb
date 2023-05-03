@@ -35,15 +35,19 @@
         <div class="carousel-item @if($k==0) active @endif">
             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-
-                @if($item->image)
-                <image width="100%" height="100%" xlink:href="{{ asset('storage/'.$item->image) }}"></image>
-                @else
-                <image width="100%" height="100%" xlink:href="https://source.unsplash.com/random/1349x512/?animal">
-                </image>
-                @endif
-
-                <rect width="100%" height="100%" fill="#777" fill-opacity="0.5" />
+                <defs>
+                    <pattern id="carouselImage{{ $k }}" patternUnits="userSpaceOnUse" width="100%" height="100%">
+                        @if($item->image)
+                        <image xlink:href="{{ asset('storage/'.$item->image) }}" width="100%" height="100%"
+                            preserveAspectRatio="xMidYMid slice" />
+                        @else
+                        <image xlink:href="https://source.unsplash.com/random/1349x512/?animal" width="100%"
+                            height="100%" preserveAspectRatio="xMidYMid slice" />
+                        @endif
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#carouselImage{{ $k }})" />
+                <rect width="100%" height="100%" fill="#777" fill-opacity="0.4" />
             </svg>
 
             <div class="container">
